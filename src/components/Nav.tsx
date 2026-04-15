@@ -7,28 +7,23 @@ export default function Nav() {
     <header>
       <div className="hdr">
         <Link href="/" className="hdr-logo">BITFAUNA</Link>
-        <nav className="hdr-nav">
-          <Link href="/">Home</Link>
-          <Link href="#concept">Docs</Link>
+        <div className="hdr-nav">
           <Link href="/canvas">Canvas</Link>
-          <Link href="#rarity">Rarity</Link>
-        </nav>
+          <a href="https://opensea.io" target="_blank" rel="noopener">OpenSea</a>
+        </div>
         <div className="hdr-right">
-          <Link href="/canvas" className="hdr-btn">[Canvas]</Link>
-          <a href="https://x.com" target="_blank" rel="noopener" className="hdr-btn" style={{width:48,fontSize:14,fontWeight:400,letterSpacing:0}}>𝕏</a>
-          <a href="https://opensea.io" target="_blank" rel="noopener" className="hdr-btn">OpenSea</a>
-          <div className="hdr-btn" style={{padding:'0 12px'}}>
+          <div className="hdr-wallet-wrap">
             <ConnectButton.Custom>
-              {({ account, chain, openAccountModal, openChainModal, openConnectModal, mounted }) => {
-                if (!mounted) return <span style={{color:'var(--dim)'}}>Connect</span>
+              {({ account, openAccountModal, openConnectModal, mounted }) => {
+                if (!mounted) return null
                 if (!account) return (
-                  <button onClick={openConnectModal} style={{background:'none',border:'none',color:'var(--dim)',fontFamily:'var(--font)',fontSize:11,fontWeight:700,letterSpacing:'0.06em',textTransform:'uppercase',cursor:'pointer',display:'flex',alignItems:'center',gap:6}}>
+                  <button onClick={openConnectModal} className="hdr-btn">
                     <span className="w-dot" />
-                    [Connect Wallet]
+                    [Connect]
                   </button>
                 )
                 return (
-                  <button onClick={openAccountModal} style={{background:'none',border:'none',color:'var(--blue)',fontFamily:'var(--font)',fontSize:11,fontWeight:700,letterSpacing:'0.06em',cursor:'pointer',display:'flex',alignItems:'center',gap:6}}>
+                  <button onClick={openAccountModal} className="hdr-btn connected">
                     <span className="w-dot live" />
                     {account.displayName}
                   </button>
