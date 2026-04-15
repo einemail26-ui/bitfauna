@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { Providers } from './providers'
+import dynamic from 'next/dynamic'
 import Nav from '@/components/Nav'
 import Parallax from '@/components/Parallax'
 
+const Providers = dynamic(() => import('./providers').then(m => m.Providers), { ssr: false })
+
 export const metadata: Metadata = {
   title: 'BITFAUNA — 2-Bit On-Chain Pareidolia',
-  description: '1111 on-chain, generative, 4-color pixel art compositions. 100% on Ethereum.',
+  description: '1111 on-chain, generative, 4-color pixel art compositions.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
