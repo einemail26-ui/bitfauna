@@ -59,7 +59,7 @@ export default function CanvasClient(){
   function paint(x:number,y:number){const h=Math.floor(brushSize/2);setPixels(prev=>{const n=new Uint8Array(prev),ne=new Set(edited);let nu=budgetUsed,nc=editCount;for(let dy=-h;dy<=h;dy++)for(let dx=-h;dx<=h;dx++){const px=x+dx,py=y+dy;if(px<0||px>=40||py<0||py>=40)continue;const i=py*40+px;if(n[i]===paintColor)continue;if(!ne.has(i)&&nu>=budgetMax&&budgetMax>0)continue;n[i]=paintColor;if(!ne.has(i)){ne.add(i);nu++;nc++}}editedRef.current=ne;setEdited(ne);setBudgetUsed(nu);setEditCount(nc);return n})}
 
   async function loadToken(nft:NFT){
-    setActiveToken(nft);setPixels(new Uint8Array(nft.pixels));setEdited(new Set());setBudgetUsed(0);setEditCount(0);setSeed(nft.id*0x9e3779b9>>>0);setLock('');
+    setActiveToken(nft);setPixels(new Uint8Array(nft.pixels));setEdited(new Set());setBudgetUsed(0);setEditCount(0);setSeed(nft.id*0x9e3779b9>>>0);setBudgetMax(0);setLock('');
     log('ok','// Bitfauna #'+nft.id+' loaded.')
     try{
       const res=await fetch(`https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_KEY}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'eth_call',params:[{to:'0x5b8c543711228595c72a76828b12107e9ccc1b56',data:'0x'+('c87b56dd').padEnd(8,'0')+nft.id.toString(16).padStart(64,'0')},'latest']})})

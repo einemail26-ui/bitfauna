@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import dynamic from 'next/dynamic'
-import Nav from '@/components/Nav'
 import Parallax from '@/components/Parallax'
 
 const Providers = dynamic(() => import('./providers').then(m => m.Providers), { ssr: false })
@@ -21,7 +20,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <Parallax />
-          <Nav />
           {children}
         </Providers>
       </body>

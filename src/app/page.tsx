@@ -1,3 +1,4 @@
+import Nav from '@/components/Nav'
 import Gallery from '@/components/Gallery'
 import Ticker from '@/components/Ticker'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -6,6 +7,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <>
+      <Nav />
       <ScrollReveal />
       <div className="page-wrap">
 
