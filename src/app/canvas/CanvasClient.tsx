@@ -4,7 +4,7 @@ import { useAccount, useWriteContract } from 'wagmi'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Link from 'next/link'
 
-const PAL=['#FFFFFF','#808080','#0000FF','#000000']
+const PAL=['#FFFFFF','#000000','#808080','#0000FF']
 const TOTAL=1600
 const CANVAS_ADDRESS=(process.env.NEXT_PUBLIC_CANVAS_ADDRESS??'0x0000000000000000000000000000000000000000') as `0x${string}`
 const BITFAUNA_ADDRESS=(process.env.NEXT_PUBLIC_BITFAUNA_ADDRESS??'0x0000000000000000000000000000000000000000') as `0x${string}`
